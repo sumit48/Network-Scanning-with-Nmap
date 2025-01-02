@@ -64,7 +64,8 @@ The TCP header contains critical fields that Nmap leverages to assess port state
 
 **Exporting Results:**
 ``` nmap -oN nmap_scan_report.txt <target_IP> 
-nmap -oX nmap_scan_report.xml <target_IP> ```
+nmap -oX nmap_scan_report.xml <target_IP>
+```
 
 **4.Interpreting Port States**
    
@@ -92,14 +93,15 @@ Nmap categorizes ports into six states based on responses:
 | 80/tcp  |filtered |  http     |
 | 443/tcp | closed  | https     |
 
-***Explanation:*** <br>
-- Port 22 (SSH): Service is actively accepting connections.<br>
+**Explanation:**
 
-- Port 80 (HTTP): Filtered by a firewall.<br>
+- Port 22 (SSH): Service is actively accepting connections.
 
-- Port 443 (HTTPS): No service is running, but the port is reachable.<br>
+- Port 80 (HTTP): Filtered by a firewall.
 
-**6. Generating Reports**
+- Port 443 (HTTPS): No service is running, but the port is reachable.
+
+**6.Generating Reports**
    
 Saved results in human-readable and XML formats:
 
@@ -117,7 +119,7 @@ Commands Used
 |Command | Description |
 |---------|---------------|
 |nmap <target_IP> | Basic scan to detect open ports.|
-| nmap -sS <target_I> | SYN Scan to detect open ports.|
+| nmap -sS <target_IP> | SYN Scan to detect open ports.|
 | nmap -sT <target_IP> | Full TCP Connect scan.|
 | nmap -sU <target_IP> | UDP Scan to identify open UDP ports.|
 | nmap -sA <target_IP> | ACK Scan to determine firewall rules.|
@@ -130,7 +132,7 @@ Report
 
 **Target System Details**
 
-- IP Address: <target_IP> <br>
+- IP Address: <target_IP> 
 - Operating System: <target_OS>
 
 **Port States**
@@ -140,6 +142,7 @@ Report
 |22/tcp | Open | SSH | Actively accepting connections.|
 |80/tcp | Filtered | HTTP | Blocked by a firewall, no response received.|
 |443/tcp | Closed | HTTPS | No service running, but port is reachable.|
+
 
 Conclusion
 ---
