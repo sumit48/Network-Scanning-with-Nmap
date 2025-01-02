@@ -1,5 +1,5 @@
 # Network-Scanning-with-Nmap
----
+
 Objective
 ---
 To explore and demonstrate the use of Nmap for network scanning, identifying open ports, services, and vulnerabilities, and analyzing TCP header responses to understand network configurations and security.
@@ -10,9 +10,8 @@ Network scanning is a fundamental step in penetration testing and vulnerability 
 
 Steps to Perform
 ---
-1. Understanding the TCP Header
-   ---
-
+***1. Understanding the TCP Header***
+   
 The TCP header contains critical fields that Nmap leverages to assess port states:
 
 **Source Port and Destination Port:** Identify communication endpoints.
@@ -23,8 +22,7 @@ The TCP header contains critical fields that Nmap leverages to assess port state
 
 **Checksum:** Ensures data integrity.
 
-Key Flags in Scanning:
----
+***Key Flags in Scanning:***
 
 **SYN**: Initiates a connection.
 
@@ -34,46 +32,42 @@ Key Flags in Scanning:
 
 **FIN**: Gracefully closes a connection.
 
-2. Setting Up the Environment
-   ---
+***2. Setting Up the Environment***
 
 Installed Nmap on a Linux system (e.g., Kali Linux or Ubuntu).
 
 Used a controlled lab environment with virtual machines as targets.
 
-3. Performing Scans
-   ---
+***3. Performing Scans***
 
-Nmap Commands:
----
+***Nmap Commands:***
 **Basic Scan:**
 
-| nmap <target_IP> |
+> nmap <target_IP> 
 
 **SYN Scan (Stealth Scan):**
 
-| nmap -sS <target_IP> |
+> nmap -sS <target_IP> 
 
 **TCP Connect Scan:**
 
-| nmap -sT <target_IP> | 
+> nmap -sT <target_IP> 
 
 **UDP Scan:**
-| nmap -sU <target_IP> |
+> nmap -sU <target_IP> 
 
 **ACK Scan:**
-| nmap -sA <target_IP>|
+> nmap -sA <target_IP>
 
 **Service Version Detection:**
-|nmap -sV <target_IP>|
+>nmap -sV <target_IP>
 
 **Exporting Results:**
-| nmap -oN nmap_scan_report.txt <target_IP> |
-| nmap -oX nmap_scan_report.xml <target_IP> |
+> nmap -oN nmap_scan_report.txt <target_IP> 
+nmap -oX nmap_scan_report.xml <target_IP> >
 
-4. Interpreting Port States
-   ---
-
+***4. Interpreting Port States***
+   
 Nmap categorizes ports into six states based on responses:
 
 **Open:** A service is actively listening.
@@ -88,43 +82,40 @@ Nmap categorizes ports into six states based on responses:
 
 **Closed|Filtered:** The port is either closed or filtered; Nmap cannot decide.
 
-5. Analyzing Results
-   ---
+***5. Analyzing Results***
+   
+***Example Scan Output:***
 
-Example Scan Output:
----
+| PORT    | STATE   | SERVICE   |
+|---------|---------|-----------|
+| 22/tcp  |  open   |  ssh      |
+| 80/tcp  |filtered |  http     |
+| 443/tcp | closed  | https     |
 
-|PORT | STATE | SERVICE |
--------------------------
-|22/tcp |  open |       ssh |
-|80/tcp  | filtered |     http |
-|443/tcp| closed | https |
-
-Explanation:
----
+***Explanation:***
 Port 22 (SSH): Service is actively accepting connections.
 
 Port 80 (HTTP): Filtered by a firewall.
 
 Port 443 (HTTPS): No service is running, but the port is reachable.
 
-6. Generating Reports
-   ---
-
+***6. Generating Reports***
+   
 Saved results in human-readable and XML formats:
 
 Normal format:
 
-| nmap -oN nmap_scan_report.txt <target_IP> |
+> nmap -oN nmap_scan_report.txt <target_IP> 
 
 XML format:
 
-|nmap -oX nmap_scan_report.xml <target_IP> |
+> nmap -oX nmap_scan_report.xml <target_IP> 
 
-**Commands Used**
+Commands Used
+---
 
-|Command | Description|
-------------------------
+|Command | Description |
+|---------|---------------|
 |nmap <target_IP> | Basic scan to detect open ports.|
 | nmap -sS <target_I> | SYN Scan to detect open ports.|
 | nmap -sT <target_IP> | Full TCP Connect scan.|
@@ -136,6 +127,7 @@ XML format:
 
 Report
 ---
+
 **Target System Details**
 
 IP Address: <target_IP>
@@ -144,7 +136,7 @@ Operating System: <target_OS>
 **Port States**
 
 |Port | State |Service |Explanation|
-------------------------------------
+|-----|-------|--------|-----------|
 |22/tcp | Open | SSH | Actively accepting connections.|
 |80/tcp | Filtered | HTTP | Blocked by a firewall, no response received.|
 |443/tcp | Closed | HTTPS | No service running, but port is reachable.|
